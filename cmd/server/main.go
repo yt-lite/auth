@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yt-lite/auth/config"
 	"github.com/yt-lite/auth/db"
+	"github.com/yt-lite/auth/router"
 	"github.com/yt-lite/libs/logger"
 )
 
@@ -27,6 +28,9 @@ func main() {
 			"message": "pong",
 		})
 	})
+
+	router.AuthRouter(r.Group("/auth"))
+
 	logger.Fatal(run(r).Error())
 }
 

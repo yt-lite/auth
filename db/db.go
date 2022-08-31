@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/yt-lite/auth/config"
+	"github.com/yt-lite/auth/models"
 	"github.com/yt-lite/libs/logger"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -19,10 +20,18 @@ func Init() {
 	if err != nil {
 		logger.Fatalf("Error opening database: %s", err)
 	}
+
 	logger.Infoln("Postgre connected")
-	db.AutoMigrate()
+
+	if db.Exec("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";").Error != nil {
+		logger.Fatalf("Error creating extension: %s", err)
+	}
+
+	err = db.AutoMigrate(&models.Auth{})
+
+	if err != nil {
+		logger.Fatalf("Error migrating database: %s", err)
+	}
 	logger.Infoln("Postgre migrated")
 	DB = db
 }
-
-

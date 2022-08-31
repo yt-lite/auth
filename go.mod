@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/google/uuid v1.1.2
 	github.com/spf13/viper v1.12.0
-	github.com/yt-lite/libs v0.0.0-20220831031746-c6e80af0fd0d
+	github.com/yt-lite/libs v0.0.0-20220831102707-fc95226dc5fa
 	gorm.io/driver/postgres v1.3.9
 	gorm.io/gorm v1.23.8
 )
