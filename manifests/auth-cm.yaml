@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-cm
+data:
+  .env: |
+    POSTGRES_PASSWORD=auth-pw
+    POSTGRES_USER=auth-user
+    POSTGRES_DB=auth-service
+    POSTGRES_PORT=5432
+    POSTGRES_HOST=auth-postgres-svc
+    HTTP_AUTH_PORT=8080

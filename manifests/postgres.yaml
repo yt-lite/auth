@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: auth-postgres-ss
+  namespace: auth-service
+spec:
+  selector:
+    matchLabels:
+      app: auth-postgres
+  serviceName: auth-postgres-svc
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: auth-postgres
+    spec:
+      volumes:
+      - name: auth-postgres-data
+        persistentVolumeClaim:
+          claimName: auth-postgres-pvc
+      containers:
+      - name: auth-postgres-cn
+        image: postgres
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: auth-postgres-cm
+                key: password
+          - name: POSTGRES_USER
+            valueFrom:
+              configMapKeyRef:
+                name: auth-postgres-cm
+                key: username
+          - name: POSTGRES_DB
+            valueFrom:
+              configMapKeyRef:
+                name: auth-postgres-cm
+                key: database
+       
+        volumeMounts:
+        - name: auth-postgres-data
+          mountPath: /var/lib/postgresql/data
+          subPath: postgres
+
+
+
+
+
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-postgres-svc
+  namespace: auth-service
+spec:
+  selector:
+    app: auth-postgres
+  ports:
+  - port: 5432
+    targetPort: 5432
+    name: web
+  clusterIP: None
+
+

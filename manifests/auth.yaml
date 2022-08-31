@@ -1,0 +1,57 @@
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-svc
+  namespace: auth-service
+spec:
+  selector:
+    app: auth-dep
+  ports:
+  - port: 8080
+    targetPort: 8080
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-dep
+  namespace: auth-service
+spec:
+  selector:
+    matchLabels:
+      app: auth-dep
+  template:
+    metadata:
+      labels:
+        app: auth-dep
+    spec:
+      containers:
+      - name: auth-dep
+        image: hiiamtrong/yt-lite-auth
+        command:
+          - "/bin/sh"
+        args:
+          - "-c"
+          - ./bin/server
+        volumeMounts:
+          - mountPath: /usr/src/app/.env
+            name: auth-env
+            subPath: .env
+        livenessProbe:
+          httpGet:
+           path: /ping
+           port: 8080
+
+          initialDelaySeconds: 10
+          periodSeconds: 10
+      volumes:
+        - name: auth-env
+          configMap:
+            name: auth-cm
+            items:
+            - key: .env
+              path: .env
+
