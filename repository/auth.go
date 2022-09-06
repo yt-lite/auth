@@ -16,7 +16,7 @@ func NewAuthRepo(db *gorm.DB) AuthRepo {
 
 func (ar *AuthRepo) Create(auth *models.Auth) *errs.AppError {
 	if err := ar.db.Create(auth).Error; err != nil {
-		return errs.NewBadGatewayError(err.Error())
+		return errs.NewInternalServerError(err.Error())
 	}
 	return nil
 }
@@ -36,4 +36,3 @@ func (ar *AuthRepo) FindByEmail(email string) (*models.Auth, *errs.AppError) {
 	}
 	return auth, nil
 }
-

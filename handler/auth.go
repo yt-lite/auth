@@ -28,9 +28,7 @@ func (ah *AuthHandler) Register() gin.HandlerFunc {
 			return
 		}
 
-		c.JSON(200, gin.H{
-			"message": "success",
-		})
+		h.WriteResponse(c.Writer, 200, map[string]string{"message": "success"})
 	}
 }
 
@@ -47,9 +45,6 @@ func (ah *AuthHandler) Login() gin.HandlerFunc {
 			return
 		}
 
-		c.JSON(200, gin.H{
-			"message": "success",
-			"data":    auth,
-		})
+		h.WriteResponse(c.Writer, 200, auth)
 	}
 }

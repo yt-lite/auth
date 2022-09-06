@@ -314,6 +314,8 @@ github.com/yt-lite/libs v0.0.0-20220831102521-35224a0dbdd0 h1:2QnakAhZM0dtVVNACF
 github.com/yt-lite/libs v0.0.0-20220831102521-35224a0dbdd0/go.mod h1:VmS74QvP0uu5GFHwM0YBjRXRn3Yw+/TDWQn6G8n9akU=
 github.com/yt-lite/libs v0.0.0-20220831102707-fc95226dc5fa h1:ybZ8G+eb3CSlyT7GHwsrNdlJ4nwUA6rB55ViIgIc9OM=
 github.com/yt-lite/libs v0.0.0-20220831102707-fc95226dc5fa/go.mod h1:VmS74QvP0uu5GFHwM0YBjRXRn3Yw+/TDWQn6G8n9akU=
+github.com/yt-lite/libs v0.0.0-20220906080042-3d51be07b9aa h1:Dsr4+bbsuM9x1QWkSmxYmE8sdqyEVPrkgA7uVEb3oWM=
+github.com/yt-lite/libs v0.0.0-20220906080042-3d51be07b9aa/go.mod h1:VmS74QvP0uu5GFHwM0YBjRXRn3Yw+/TDWQn6G8n9akU=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.32/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
